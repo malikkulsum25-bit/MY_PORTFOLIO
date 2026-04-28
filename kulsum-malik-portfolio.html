@@ -88,10 +88,64 @@
   .hero {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    align-items: center;
     padding: 8rem 3rem 5rem;
     position: relative;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-photo {
+    width: 320px;
+    height: 380px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    position: relative;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: luminosity;
+    opacity: 0.8;
+    transition: all 0.4s ease;
+    display: block;
+  }
+
+  .hero-photo:hover img {
+    opacity: 1;
+    mix-blend-mode: normal;
+  }
+
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    top: 15px; left: 15px; right: -15px; bottom: -15px;
+    border: 1px solid var(--accent);
+    z-index: -1;
+    transition: all 0.4s ease;
+  }
+
+  .hero-photo:hover::after {
+    top: 0; left: 0; right: 0; bottom: 0;
   }
 
   .hero-eyebrow {
@@ -578,7 +632,12 @@
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
-    .hero { padding: 6rem 1.5rem 4rem; }
+    .hero { padding: 6rem 1.5rem 4rem; min-height: auto; }
+    .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+    .hero-photo-container { order: -1; }
+    .hero-photo { width: 260px; height: 320px; }
+    .hero-desc { margin: 0 auto 3rem; }
+    .hero-cta { justify-content: center; }
     section { padding: 4rem 1.5rem; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .contact-section { padding: 5rem 1.5rem; }
@@ -602,17 +661,23 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-grid"></div>
-  <div style="position:relative; z-index:1;">
-    <div class="hero-eyebrow">Computer Science Engineer</div>
-    <h1 class="hero-name">Kulsum<br><em>Malik</em></h1>
-    <p class="hero-role">Full-Stack Developer & AI Enthusiast</p>
-    <p class="hero-desc">
-      B.Tech student at VIT Chennai specialising in AI & Robotics. I build full-stack web applications, automation tools, and embedded systems — turning ideas into working software.
-    </p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn-primary">View Projects →</a>
-      <a href="#contact" class="btn-ghost">Get in Touch</a>
+  <div class="hero-grid">
+    <div style="position:relative; z-index:1;">
+      <div class="hero-eyebrow">Computer Science Engineer</div>
+      <h1 class="hero-name">Kulsum<br><em>Malik</em></h1>
+      <p class="hero-role">Full-Stack Developer & AI Enthusiast</p>
+      <p class="hero-desc">
+        B.Tech student at VIT Chennai specialising in AI & Robotics. I build full-stack web applications, automation tools, and embedded systems — turning ideas into working software.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View Projects →</a>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-photo-container">
+      <div class="hero-photo">
+        <img src="assets/kulsum.jpeg" alt="Kulsum Malik">
+      </div>
     </div>
   </div>
 </section>
